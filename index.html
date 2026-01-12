@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Proposta Liora IA | Raonny Canabarro</title>
+    <meta name="description" content="Statement of Work - Liora IA - Governança Normativa">
+    
+    <!-- Tailwind CSS (Via CDN for portability) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Font Configuration -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Smooth Accordion Transition */
+        .accordion-content {
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .accordion-content.active {
+            opacity: 1;
+        }
+
+        .rotate-icon {
+            transition: transform 0.4s ease;
+        }
+        
+        .active .rotate-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Copy Block Styles */
+        .copy-block {
+            background-color: #f4f4f5; /* zinc-100 */
+            border: 1px solid #e4e4e7; /* zinc-200 */
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-enter {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Print Styles */
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; background: white; }
+            .accordion-content { max-height: none !important; opacity: 1 !important; display: block !important; }
+            .break-before { page-break-before: always; }
+            button { display: none; }
+            
+            /* Ensure Next Steps section prints clearly */
+            .print-avoid-break { break-inside: avoid; }
+            .copy-block { border: 1px solid #ddd; background: none; }
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zinc: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white pb-10">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-zinc-50 z-50 transition-all duration-300 no-print">
+        <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <!-- SVG Logo -->
+                <svg viewBox="0 0 40 40" class="w-10 h-10 text-zinc-900 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="currentColor" class="text-zinc-900"/>
+                    <path d="M14 12H20C23.3137 12 26 14.6863 26 18C26 21.3137 23.3137 24 20 24H17V28H14V12Z" fill="white"/>
+                    <path d="M20 24L25.5 29.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                
+                <div class="flex flex-col justify-center h-full">
+                    <span class="text-sm font-bold tracking-[0.05em] text-zinc-900 leading-none uppercase">Raonny Canabarro</span>
+                    <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                        <span class="text-[10px] tracking-widest text-zinc-400 font-medium uppercase">Estratégia Jurídica</span>
+                        <span class="w-0.5 h-0.5 rounded-full bg-zinc-300 hidden sm:block"></span>
+                        <span class="text-[10px] tracking-widest text-zinc-400 font-medium whitespace-nowrap">OAB/RS 102.418</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="window.print()" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-50 hover:bg-zinc-100 transition-all active:scale-95 group">
+                <i data-lucide="printer" class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-900 transition-colors"></i>
+                <span class="text-xs font-medium text-zinc-500 group-hover:text-zinc-900 transition-colors tracking-wide">Salvar PDF</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto pt-32 sm:pt-44 pb-20 px-6 sm:px-10">
+        
+        <!-- Hero Section -->
+        <header class="mb-20 sm:mb-24 text-center sm:text-left animate-enter">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-50 border border-zinc-100 mb-8 sm:mb-10 shadow-sm mx-auto sm:mx-0">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-zinc-500">Statement of Work &bull; 2026</span>
+            </div>
+            
+            <h1 class="text-5xl sm:text-7xl font-semibold tracking-tighter text-zinc-900 mb-6 sm:mb-8 leading-[0.95]">
+                Liora IA.
+                <span class="block text-zinc-300 font-light serif-italic mt-2 tracking-tight">Compliance by design.</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-zinc-500 max-w-2xl leading-relaxed font-light tracking-wide mx-auto sm:mx-0">
+                Estruturação da camada de <span class="text-zinc-900 font-normal">Governança, Risco e Compliance</span>.
+                Segurança jurídica e metodológica, desenhada para o estágio Alpha.
+            </p>
+        </header>
+
+        <hr class="border-t border-zinc-100 mb-20 sm:mb-24 w-24 mx-auto sm:mx-0 animate-enter delay-100" />
+
+        <!-- The Counsel Profile -->
+        <section class="mb-20 sm:mb-24 animate-enter delay-200">
+            <div class="bg-zinc-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <!-- Decorative BG -->
+                <div class="absolute top-0 right-0 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-zinc-800/30 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 md:items-center justify-between">
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 mb-2">Responsável Técnico</h3>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-4">Raonny Canabarro</h2>
+                        <div class="space-y-1 text-zinc-400 font-light text-sm tracking-wide">
+                            <p>Especialista em Direito Digital & Governança de Dados.</p>
+                            <p>Estratégia Jurídica para Ambientes de Alta Complexidade.</p>
+                            <p class="pt-2 text-zinc-500 text-xs">OAB/RS 102.418</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 text-left">
+                        <div class="flex items-center gap-3 text-zinc-300">
+                             <i data-lucide="fingerprint" class="text-zinc-500 w-5 h-5"></i>
+                             <span class="text-sm font-medium">Autenticidade & Blindagem</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-zinc-300">
+                             <i data-lucide="cpu" class="text-zinc-500 w-5 h-5"></i>
+                             <span class="text-sm font-medium">Framework Jurídico-Metodológico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Summary -->
+        <section class="mb-20 sm:mb-24 animate-enter delay-300">
+            <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 sm:gap-8 items-start">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mt-2 border-t border-zinc-200 pt-2 w-fit">Sumário</span>
+                <div class="prose prose-zinc text-zinc-600 leading-relaxed font-light text-lg">
+                    <p class="mb-4">
+                        O objetivo é entregar a estruturação normativa e os frameworks de governança para o produto "Liora". 
+                        Focaremos na elaboração de documentos e diretrizes para mitigação de riscos e estruturação de acesso restrito.
+                    </p>
+                    <p>
+                        Distingue-se de assessorias convencionais pela natureza híbrida: 
+                        unimos Arquitetura de Informação e Direito Digital para desenhar os protocolos que protegerão o ativo intelectual da ANDHE.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Modules (Accordion) -->
+        <section class="mb-24 sm:mb-32 break-before animate-enter delay-300">
+            <div class="flex justify-between items-end mb-8 sm:mb-12 border-b border-zinc-100 pb-4">
+                <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900">Escopo Normativo</h2>
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">4 Fases Sequenciais</span>
+            </div>
+            
+            <div class="space-y-4" id="modules-container">
+                
+                <!-- Module 1 -->
+                <div class="accordion-group group border border-zinc-100 rounded-2xl transition-all duration-300 bg-white hover:border-zinc-300 overflow-hidden">
+                    <button class="accordion-btn w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span class="text-xs font-mono text-zinc-300">01</span>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-medium text-zinc-900">Módulo 1: Alpha Shield</h3>
+                                <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Arquitetura Jurídico-Tecnológica</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="rotate-icon text-zinc-300 w-5 h-5"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-50">
+                        <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <ul class="space-y-4">
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Alpha Access Agreement</strong>
+                                    Termos com NDA rigoroso e renúncia expressa a direitos sobre feedback.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">UX Writing Legal</strong>
+                                    Definição dos textos de aviso (Disclaimers) integráveis à interface.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Input Guardrails</strong>
+                                    Diretrizes documentais para bloqueio de coleta de dados de menores.
+                                </li>
+                                <!-- Entrega -->
+                                <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
+                                    Termos de Uso do Alpha (AAA), disclaimers jurídicos integráveis à interface e diretrizes de tratamento de dados sensíveis.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="accordion-group group border border-zinc-100 rounded-2xl transition-all duration-300 bg-white hover:border-zinc-300 overflow-hidden">
+                    <button class="accordion-btn w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span class="text-xs font-mono text-zinc-300">02</span>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-medium text-zinc-900">Módulo 2: Red Teaming</h3>
+                                <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Protocolos de Testes Adversariais</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="rotate-icon text-zinc-300 w-5 h-5"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-50">
+                        <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <ul class="space-y-4">
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Protocolo de Jailbreak</strong>
+                                    Elaboração de roteiros para simulação de ataques visando extrair instruções raiz.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Definição de Cenários Críticos</strong>
+                                    Critérios de resposta esperada para ideação suicida e alienação parental.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Validação Metodológica</strong>
+                                    Diretrizes para auditoria de consistência com 'Guardiões de Aramora'.
+                                </li>
+                                <!-- Entrega -->
+                                <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
+                                    Protocolos documentais de Red Teaming e roteiros de testes adversariais para execução pela equipe técnica da ANDHE.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="accordion-group group border border-zinc-100 rounded-2xl transition-all duration-300 bg-white hover:border-zinc-300 overflow-hidden">
+                    <button class="accordion-btn w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span class="text-xs font-mono text-zinc-300">03</span>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-medium text-zinc-900">Módulo 3: Data Integrity</h3>
+                                <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Metodologia de Feedback</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="rotate-icon text-zinc-300 w-5 h-5"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-50">
+                        <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <ul class="space-y-4">
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Trap Questions</strong>
+                                    Design de perguntas de controle para eliminar viés de cortesia.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Critérios de Triagem</strong>
+                                    Metodologia para segregação analítica: Falha de UX vs. Risco Civil.
+                                </li>
+                                <!-- Entrega -->
+                                <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
+                                    Questionário Alpha estruturado, metodologia de validação de feedback e critérios de triagem de risco.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="accordion-group group border border-zinc-100 rounded-2xl transition-all duration-300 bg-white hover:border-zinc-300 overflow-hidden">
+                    <button class="accordion-btn w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span class="text-xs font-mono text-zinc-300">04</span>
+                            <div>
+                                <h3 class="text-base sm:text-lg font-medium text-zinc-900">Módulo 4: Governança</h3>
+                                <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Transferência de Conhecimento</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-down" class="rotate-icon text-zinc-300 w-5 h-5"></i>
+                    </button>
+                    <div class="accordion-content bg-zinc-50">
+                        <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <ul class="space-y-4">
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">System Cards</strong>
+                                    Orientação para documentação técnica das capacidades e limitações.
+                                </li>
+                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Parecer de Viabilidade</strong>
+                                    Relatório de conformidade jurídica para avanço à fase Beta.
+                                </li>
+                                <!-- Entrega -->
+                                <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
+                                    Orientação metodológica e templates de documentação (System Card, Model Card) e parecer técnico de viabilidade.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Disclaimer & Limits -->
+        <section class="mb-20 sm:mb-24">
+            <div class="flex items-center gap-2 mb-6 sm:mb-8">
+                <h2 class="text-lg font-semibold tracking-tight text-zinc-900">Limites da Atuação</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+                <div class="space-y-6 sm:space-y-8">
+                    <div>
+                        <h4 class="flex items-center gap-2 text-xs font-bold text-zinc-900 mb-2 uppercase tracking-wider">
+                            Auditoria Documental
+                        </h4>
+                        <p class="text-sm text-zinc-500 font-light leading-relaxed text-justify">
+                            A consultoria restringe-se à análise lógica, produção de pareceres e entrega de protocolos de governança. 
+                            Não realizamos intervenções diretas no código-fonte, hospedagem ou infraestrutura.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="flex items-center gap-2 text-xs font-bold text-zinc-900 mb-2 uppercase tracking-wider">
+                            Execução de Testes
+                        </h4>
+                        <p class="text-sm text-zinc-500 font-light leading-relaxed text-justify">
+                            Os protocolos de <em>Red Teaming</em> são desenhados pela consultoria, mas a execução dos testes, simulações e ajustes técnicos é de responsabilidade exclusiva da equipe da ANDHE, cabendo à consultoria apenas a definição dos protocolos e critérios de avaliação.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-50 rounded-2xl p-6 sm:p-8 border border-zinc-100 flex flex-col justify-between h-full mt-4 sm:mt-0">
+                    <div>
+                        <h4 class="flex items-center gap-2 text-xs font-bold text-zinc-900 mb-4 uppercase tracking-wider">
+                            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                            Apetite de Risco & Decisão
+                        </h4>
+                        <p class="text-sm text-zinc-600 font-light leading-relaxed mb-6">
+                            O papel do consultor é mapear riscos e recomendar mitigadores. 
+                            A decisão de acatar ou rejeitar recomendações é prerrogativa exclusiva da ANDHE.
+                        </p>
+                        <p class="text-sm text-zinc-600 font-light leading-relaxed mb-2">
+                            A consultoria não executa, valida ou homologa tecnicamente o funcionamento da IA, limitando-se à análise jurídica e metodológica dos riscos.
+                        </p>
+                    </div>
+                    <p class="text-[10px] text-zinc-400 italic pt-4 border-t border-zinc-200">
+                        * A consultoria limita-se à análise jurídica e metodológica. A responsabilidade por implementação, operação e decisões de negócio permanece integralmente com a ANDHE.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Section -->
+        <section class="mb-16 sm:mb-20 bg-white rounded-none border-t border-zinc-100 pt-8 sm:pt-12">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8 sm:gap-12">
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6 sm:mb-8">Condições Comerciais</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="flex justify-between items-center text-sm text-zinc-600 font-light border-b border-zinc-50 pb-2">
+                            <span>Setup Fee (Aceite)</span>
+                            <span class="font-medium text-zinc-900">50%</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm text-zinc-600 font-light border-b border-zinc-50 pb-2">
+                            <span>Completion Fee (Entrega)</span>
+                            <span class="font-medium text-zinc-900">50%</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm text-zinc-600 font-light border-b border-zinc-50 pb-2">
+                            <span>Validade da Proposta</span>
+                            <span class="font-medium text-zinc-900">05 dias úteis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right w-full md:w-auto">
+                    <span class="block text-[10px] font-mono text-zinc-400 mb-2 uppercase tracking-wider">Valor Total do Projeto</span>
+                    <div class="flex items-baseline justify-end gap-1">
+                        <span class="text-lg text-zinc-400 font-light">R$</span>
+                        <span class="text-5xl font-light text-zinc-900 tracking-tighter">4.920</span>
+                        <span class="text-lg text-zinc-400 font-light">,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps & Action (Visible on Print, Icons Hidden) -->
+        <section class="mb-24 sm:mb-32 animate-enter delay-400 print-avoid-break">
+             <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6">Formalização & Próximos Passos</h3>
+             <div class="bg-zinc-50 rounded-2xl p-6 sm:p-8 border border-zinc-100 copy-block">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <ol class="space-y-4 list-decimal list-inside text-sm text-zinc-600 font-light">
+                            <li><span class="text-zinc-900 font-medium">Aceite Formal:</span> Envio do texto de confirmação abaixo.</li>
+                            <li><span class="text-zinc-900 font-medium">Setup Fee:</span> Pagamento de 50% para início dos trabalhos.</li>
+                            <li><span class="text-zinc-900 font-medium">Início:</span> Agendamento do kickoff e cronograma.</li>
+                        </ol>
+                    </div>
+                    <div class="relative group cursor-pointer" onclick="copyToClipboard(this)">
+                         <p class="text-xs text-zinc-400 uppercase tracking-wide mb-2">Texto de Aceite (Copiar e Enviar)</p>
+                         <div class="bg-white border border-zinc-200 rounded-lg p-3 relative">
+                             <p class="text-xs text-zinc-600 font-mono leading-relaxed" data-copy-target>Eu, [Nome do Responsável], [Cargo], em nome da ANDHE, aceito a proposta comercial para o Programa de Governança Algorítmica (Liora IA - Alpha Stage), no valor total de R$ 4.920,00, estando ciente das condições de pagamento (50/50) e dos limites do escopo contratado (consultoria jurídica e metodológica, sem execução técnica, sem intervenção em código-fonte e sem homologação operacional).</p>
+                             <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity no-print">
+                                 <i data-lucide="copy" class="w-4 h-4 text-zinc-400"></i>
+                             </div>
+                         </div>
+                         <div class="copy-feedback absolute inset-0 bg-zinc-900/5 backdrop-blur-[1px] rounded-lg flex items-center justify-center opacity-0 transition-opacity pointer-events-none no-print z-10" style="top: 24px;">
+                             <span class="text-xs font-bold text-zinc-900 bg-white px-3 py-1 rounded shadow-sm">Copiado!</span>
+                         </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="flex flex-col items-center border-t border-zinc-100 pt-10 sm:pt-12 pb-6 no-print">
+            <div class="text-center">
+                <p class="text-sm font-semibold text-zinc-900 tracking-tight">Raonny Canabarro</p>
+                <p class="text-[10px] text-zinc-400 mt-1 tracking-widest uppercase">Estratégia em Direito Digital &bull; OAB/RS 102.418</p>
+                <p class="text-[10px] text-zinc-300 mt-4 font-mono">© 2026. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Interactive Script -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Copy to Clipboard Logic (Robust Fallback for iOS & Safety)
+        async function copyToClipboard(container) {
+            const textElement = container.querySelector('[data-copy-target]');
+            // Extract text content cleanly, handling nulls
+            const text = textElement ? (textElement.textContent || "").trim() : "";
+            
+            const feedback = container.querySelector('.copy-feedback');
+            // Safely select the span inside
+            const feedbackLabel = feedback ? feedback.querySelector('span') : null;
+
+            const showFeedback = (message) => {
+                if (!feedback) return;
+                if (feedbackLabel) feedbackLabel.textContent = message;
+
+                feedback.classList.remove('opacity-0');
+                setTimeout(() => {
+                    feedback.classList.add('opacity-0');
+                    // Reset to default after fade out
+                    setTimeout(() => { if (feedbackLabel) feedbackLabel.textContent = "Copiado!"; }, 300);
+                }, 2000);
+            };
+
+            if (!text) return;
+
+            // Strategy 1: Modern API
+            try {
+                await navigator.clipboard.writeText(text);
+                showFeedback("Copiado!");
+                return;
+            } catch (_) {}
+
+            // Strategy 2: Legacy Fallback (Reliable on iOS)
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                
+                // Ensure element is visible but out of viewport/pointer events
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                textArea.style.top = "0";
+                document.body.appendChild(textArea);
+                
+                textArea.focus();
+                textArea.select();
+                // Critical for iOS selection
+                textArea.setSelectionRange(0, textArea.value.length);
+                
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                showFeedback(successful ? "Copiado!" : "Selecione e copie");
+            } catch (_) {
+                showFeedback("Selecione e copie");
+            }
+        }
+
+        // Accordion Logic
+        document.querySelectorAll('.accordion-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const group = button.closest('.accordion-group');
+                const content = group.querySelector('.accordion-content');
+                const icon = group.querySelector('.rotate-icon');
+
+                // Toggle logic
+                const isActive = content.classList.contains('active');
+
+                // Close all others (optional - can remove if you want multiple open)
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.maxHeight = 0;
+                });
+                document.querySelectorAll('.rotate-icon').forEach(i => {
+                    i.style.transform = 'rotate(0deg)';
+                });
+                document.querySelectorAll('.accordion-group').forEach(g => {
+                    g.classList.remove('ring-1', 'ring-zinc-200', 'shadow-sm');
+                });
+
+                if (!isActive) {
+                    content.classList.add('active');
+                    
+                    // REFLOW HACK: Force browser to recalculate layout for correct animation
+                    content.style.maxHeight = '0px';
+                    void content.offsetHeight; // The actual reflow trigger
+
+                    // Set height to scrollHeight for animation
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    
+                    icon.style.transform = 'rotate(180deg)';
+                    group.classList.add('ring-1', 'ring-zinc-200', 'shadow-sm');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
