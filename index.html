@@ -210,11 +210,53 @@
             </div>
         </section>
 
-        <!-- Interactive Modules (Accordion) -->
+        <!-- Cronograma Section -->
         <section class="mb-24 sm:mb-32 break-before animate-enter delay-300">
+            <div class="flex justify-between items-end mb-6 sm:mb-8 border-b border-zinc-100 pb-4">
+                <h2 class="text-lg sm:text-xl font-semibold tracking-tight text-zinc-900">Cronograma de Entregas</h2>
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">D0 = aceite + setup fee + insumos mínimos</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white border border-zinc-100 rounded-2xl p-6">
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-3">Módulo 1 — Alpha Shield</p>
+                    <p class="text-sm text-zinc-600 font-light leading-relaxed">
+                        Entrega v1 em <strong class="text-zinc-900 font-medium">05 dias úteis</strong> após início. Consolidação e ajustes finais em seguida.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-zinc-100 rounded-2xl p-6">
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-3">Módulo 2 — Red Teaming</p>
+                    <p class="text-sm text-zinc-600 font-light leading-relaxed">
+                        Entrega v1 em <strong class="text-zinc-900 font-medium">10 dias úteis</strong> após início. Consolidação da matriz de severidade em seguida.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-zinc-100 rounded-2xl p-6">
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-3">Módulo 3 — Data Integrity</p>
+                    <p class="text-sm text-zinc-600 font-light leading-relaxed">
+                        Entrega em <strong class="text-zinc-900 font-medium">15 dias úteis</strong> após início. Ajustes e versão final na sequência.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-zinc-100 rounded-2xl p-6">
+                    <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-3">Módulo 4 — Governança</p>
+                    <p class="text-sm text-zinc-600 font-light leading-relaxed">
+                        Templates e Parecer Final em <strong class="text-zinc-900 font-medium">20 dias úteis</strong> após início.
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-[10px] text-zinc-400 italic mt-5">
+                Observação: Os prazos contam a partir da disponibilização dos insumos mínimos (fluxo do Alpha, telas de interface, política de dados e responsável técnico).
+            </p>
+        </section>
+
+        <!-- Interactive Modules (Accordion) -->
+        <section class="mb-24 sm:mb-32 animate-enter delay-300">
             <div class="flex justify-between items-end mb-8 sm:mb-12 border-b border-zinc-100 pb-4">
                 <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900">Escopo Normativo</h2>
-                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">4 Fases Sequenciais</span>
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Detalhamento Técnico</span>
             </div>
             
             <div class="space-y-4" id="modules-container">
@@ -233,6 +275,16 @@
                     </button>
                     <div class="accordion-content bg-zinc-50">
                         <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <p class="text-sm text-zinc-600 font-light leading-relaxed mb-5">
+                                Este módulo cria a camada jurídica de entrada no Alpha: termos, avisos de interface e guardrails documentais.
+                                O objetivo é reduzir exposição civil e proteger o ativo intelectual, deixando claro o que é permitido no uso, o que é proibido e como o produto deve se apresentar ao usuário.
+                            </p>
+
+                            <div class="text-xs text-zinc-600 font-light border border-zinc-200 bg-white rounded-lg p-3 mb-5">
+                                <strong class="text-zinc-900 font-medium">Referência (prévia já alinhada):</strong>
+                                já foram compartilhados exemplos iniciais de travas documentais para reduzir exposição.
+                                A entrega contratada consolida a versão completa (v2), integrada ao Alpha Access Agreement e aos textos de interface.
+                            </div>
                             <ul class="space-y-4">
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Alpha Access Agreement</strong>
@@ -240,7 +292,7 @@
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">UX Writing Legal</strong>
-                                    Definição dos textos de aviso (Disclaimers) integráveis à interface.
+                                    Definição dos textos de aviso (Disclaimers) integráveis à interface para isenção médica/psicológica.
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Input Guardrails</strong>
@@ -248,8 +300,8 @@
                                 </li>
                                 <!-- Entrega -->
                                 <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
-                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
-                                    Termos de Uso do Alpha (AAA), disclaimers jurídicos integráveis à interface e diretrizes de tratamento de dados sensíveis.
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega Final:</strong>
+                                    Termos de Uso do Alpha (AAA), disclaimers jurídicos prontos e diretrizes de dados sensíveis.
                                 </li>
                             </ul>
                         </div>
@@ -270,14 +322,24 @@
                     </button>
                     <div class="accordion-content bg-zinc-50">
                         <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <p class="text-sm text-zinc-600 font-light leading-relaxed mb-5">
+                                Este módulo define o “como testar” a IA de forma controlada, antes de abrir o Alpha.
+                                Entregamos roteiros, cenários e critérios para simular falhas adversariais e comportamentos críticos, com padrão de evidência e trilha de auditoria, para que a equipe técnica execute e documente.
+                            </p>
+
+                            <div class="text-xs text-zinc-600 font-light border border-zinc-200 bg-white rounded-lg p-3 mb-5">
+                                <strong class="text-zinc-900 font-medium">Referência (prévia já alinhada):</strong>
+                                já foram enviados exemplos iniciais de roteiros de testes.
+                                A entrega contratada consolida a versão completa (v2), com matriz de severidade, critérios de aprovação/reprovação e padrão de evidências.
+                            </div>
                             <ul class="space-y-4">
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
-                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Protocolo de Jailbreak</strong>
-                                    Elaboração de roteiros para simulação de ataques visando extrair instruções raiz.
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Matriz de Risco Jurídico</strong>
+                                    Definição do nível de tolerância legal para falhas em testes de Jailbreak.
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
-                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Definição de Cenários Críticos</strong>
-                                    Critérios de resposta esperada para ideação suicida e alienação parental.
+                                    <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Cenários Críticos & Compliance</strong>
+                                    Critérios normativos de resposta para ideação suicida e alienação parental (validação legal do teste).
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Validação Metodológica</strong>
@@ -285,8 +347,8 @@
                                 </li>
                                 <!-- Entrega -->
                                 <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
-                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
-                                    Protocolos documentais de Red Teaming e roteiros de testes adversariais para execução pela equipe técnica da ANDHE.
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega Final:</strong>
+                                    Protocolos documentais de Governança e Matriz de Risco Jurídico para nortear a execução técnica.
                                 </li>
                             </ul>
                         </div>
@@ -307,10 +369,14 @@
                     </button>
                     <div class="accordion-content bg-zinc-50">
                         <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <p class="text-sm text-zinc-600 font-light leading-relaxed mb-5">
+                                Este módulo transforma feedback do Alpha em dado útil e defensável.
+                                Entregamos um questionário estruturado e uma metodologia de triagem que separa falhas de UX de riscos jurídicos, reduzindo ruído e evitando conclusões erradas a partir de respostas enviesadas.
+                            </p>
                             <ul class="space-y-4">
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Trap Questions</strong>
-                                    Design de perguntas de controle para eliminar viés de cortesia.
+                                    Design de perguntas de controle para eliminar viés de cortesia e validar dados.
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Critérios de Triagem</strong>
@@ -318,8 +384,8 @@
                                 </li>
                                 <!-- Entrega -->
                                 <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
-                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
-                                    Questionário Alpha estruturado, metodologia de validação de feedback e critérios de triagem de risco.
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega Final:</strong>
+                                    Questionário Alpha estruturado e metodologia de validação de feedback.
                                 </li>
                             </ul>
                         </div>
@@ -340,19 +406,23 @@
                     </button>
                     <div class="accordion-content bg-zinc-50">
                         <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                            <p class="text-sm text-zinc-600 font-light leading-relaxed mb-5">
+                                Este módulo organiza a documentação de governança para o avanço do Alpha ao Beta.
+                                Entregamos templates e diretrizes para registrar capacidades/limitações do sistema e um parecer de viabilidade jurídica, consolidando critérios mínimos de conformidade para evoluir com segurança.
+                            </p>
                             <ul class="space-y-4">
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">System Cards</strong>
-                                    Orientação para documentação técnica das capacidades e limitações.
+                                    Orientação para documentação técnica das capacidades e limitações (exigência de compliance).
                                 </li>
                                 <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Parecer de Viabilidade</strong>
-                                    Relatório de conformidade jurídica para avanço à fase Beta.
+                                    Relatório de conformidade jurídica para avanço à fase Beta, validando os relatórios técnicos apresentados.
                                 </li>
                                 <!-- Entrega -->
                                 <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
-                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega:</strong>
-                                    Orientação metodológica e templates de documentação (System Card, Model Card) e parecer técnico de viabilidade.
+                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega Final:</strong>
+                                    Manuais de Documentação (System Cards) e Parecer Técnico de Viabilidade Jurídica.
                                 </li>
                             </ul>
                         </div>
@@ -384,7 +454,7 @@
                             Execução de Testes
                         </h4>
                         <p class="text-sm text-zinc-500 font-light leading-relaxed text-justify">
-                            Os protocolos de <em>Red Teaming</em> são desenhados pela consultoria, mas a execução dos testes, simulações e ajustes técnicos é de responsabilidade exclusiva da equipe da ANDHE, cabendo à consultoria apenas a definição dos protocolos e critérios de avaliação.
+                            Os protocolos de <em>Red Teaming</em> são desenhados pela consultoria, mas a execução prática dos testes, simulações e ajustes técnicos é de responsabilidade exclusiva da equipe técnica da ANDHE, cabendo à consultoria apenas a definição dos protocolos e critérios de avaliação legal.
                         </p>
                     </div>
                 </div>
@@ -400,11 +470,14 @@
                             A decisão de acatar ou rejeitar recomendações é prerrogativa exclusiva da ANDHE.
                         </p>
                         <p class="text-sm text-zinc-600 font-light leading-relaxed mb-2">
-                            A consultoria não executa, valida ou homologa tecnicamente o funcionamento da IA, limitando-se à análise jurídica e metodológica dos riscos.
+                            A consultoria não executa, valida ou homologa tecnicamente o funcionamento da IA, limitando-se à análise jurídica e metodológica dos riscos reportados.
                         </p>
                     </div>
                     <p class="text-[10px] text-zinc-400 italic pt-4 border-t border-zinc-200">
                         * A consultoria limita-se à análise jurídica e metodológica. A responsabilidade por implementação, operação e decisões de negócio permanece integralmente com a ANDHE.
+                    </p>
+                    <p class="text-[10px] text-zinc-400 italic mt-4">
+                        Entregas consistem em documentos, critérios e protocolos. Execução técnica, implementação em produto e decisões de operação permanecem sob responsabilidade exclusiva da ANDHE.
                     </p>
                 </div>
             </div>
