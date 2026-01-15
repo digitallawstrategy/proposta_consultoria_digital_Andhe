@@ -218,10 +218,12 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white border border-zinc-100 rounded-2xl p-6">
+                <!-- Módulo 1 com destaque de entrega -->
+                <div class="bg-white border border-emerald-100 ring-1 ring-emerald-50 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wider rounded-bl-xl">Entregue</div>
                     <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400 mb-3">Módulo 1 — Alpha Shield</p>
                     <p class="text-sm text-zinc-600 font-light leading-relaxed">
-                        Entrega v1 em <strong class="text-zinc-900 font-medium">05 dias úteis</strong> após início. Consolidação e ajustes finais em seguida.
+                        Entrega v1 realizada em <strong class="text-zinc-900 font-medium">05 dias úteis</strong>. Documentação disponível no repositório seguro abaixo.
                     </p>
                 </div>
 
@@ -261,47 +263,55 @@
             
             <div class="space-y-4" id="modules-container">
                 
-                <!-- Module 1 -->
-                <div class="accordion-group group border border-zinc-100 rounded-2xl transition-all duration-300 bg-white hover:border-zinc-300 overflow-hidden">
+                <!-- Module 1: SECURE FOLDER INTEGRATION -->
+                <div class="accordion-group group border border-emerald-200 ring-1 ring-emerald-50 rounded-2xl transition-all duration-300 bg-white hover:border-emerald-300 overflow-hidden">
                     <button class="accordion-btn w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none">
                         <div class="flex items-center gap-4 sm:gap-6">
-                            <span class="text-xs font-mono text-zinc-300">01</span>
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">✓</span>
                             <div>
                                 <h3 class="text-base sm:text-lg font-medium text-zinc-900">Módulo 1: Alpha Shield</h3>
-                                <p class="text-xs text-zinc-400 mt-1 uppercase tracking-wider">Arquitetura Jurídico-Tecnológica</p>
+                                <p class="text-xs text-emerald-600 mt-1 uppercase tracking-wider font-medium">Entregue &bull; Repositório Seguro</p>
                             </div>
                         </div>
                         <i data-lucide="chevron-down" class="rotate-icon text-zinc-300 w-5 h-5"></i>
                     </button>
                     <div class="accordion-content bg-zinc-50">
-                        <div class="pl-14 sm:pl-16 pr-6 pb-6 pt-2">
+                        <div class="pl-4 sm:pl-16 pr-6 pb-6 pt-2">
+                            
+                            <!-- Secure Folder Section -->
+                            <div class="bg-white border border-emerald-100 rounded-xl p-6 mb-6 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                                <div class="p-3 bg-emerald-50 rounded-full text-emerald-600 border border-emerald-100">
+                                    <i data-lucide="folder-lock" class="w-6 h-6"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-sm font-bold text-zinc-900 mb-1">Repositório Criptografado (v2.0)</h4>
+                                    <p class="text-xs text-zinc-500 leading-relaxed mb-3">
+                                        O acesso aos arquivos (AAA, UX Writing e Guardrails) está centralizado em pasta criptografada com controle de acesso auditável.
+                                    </p>
+                                    <a href="https://1drv.ms/f/c/9e7aab37a0e1c9bf/IgAbVQcfU38eTqvBlHfidtndAXrc4BFAZPDIRiwJBXelC54?e=FBJVoF" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 text-white text-xs font-medium rounded-lg hover:bg-emerald-600 transition-colors shadow-sm">
+                                        <span>Acessar Documentação Segura</span>
+                                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                                    </a>
+                                </div>
+                            </div>
+
                             <p class="text-sm text-zinc-600 font-light leading-relaxed mb-5">
-                                Este módulo cria a camada jurídica de entrada no Alpha: termos, avisos de interface e guardrails documentais.
-                                O objetivo é reduzir exposição civil e proteger o ativo intelectual, deixando claro o que é permitido no uso, o que é proibido e como o produto deve se apresentar ao usuário.
+                                Este módulo criou a camada jurídica de entrada no Alpha: termos, avisos de interface e guardrails documentais.
+                                O objetivo é reduzir exposição civil e proteger o ativo intelectual.
                             </p>
 
-                            <div class="text-xs text-zinc-600 font-light border border-zinc-200 bg-white rounded-lg p-3 mb-5">
-                                <strong class="text-zinc-900 font-medium">Referência (prévia já alinhada):</strong>
-                                já foram compartilhados exemplos iniciais de travas documentais para reduzir exposição.
-                                A entrega contratada consolida a versão completa (v2), integrada ao Alpha Access Agreement e aos textos de interface.
-                            </div>
-                            <ul class="space-y-4">
-                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                            <ul class="space-y-4 border-l border-zinc-200 pl-4 ml-2">
+                                <li class="text-sm text-zinc-600 font-light">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Alpha Access Agreement</strong>
                                     Termos com NDA rigoroso e renúncia expressa a direitos sobre feedback.
                                 </li>
-                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                <li class="text-sm text-zinc-600 font-light">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">UX Writing Legal</strong>
-                                    Definição dos textos de aviso (Disclaimers) integráveis à interface para isenção médica/psicológica.
+                                    Definição dos textos de aviso (Disclaimers) integráveis à interface.
                                 </li>
-                                <li class="text-sm text-zinc-600 font-light border-l border-zinc-200 pl-4">
+                                <li class="text-sm text-zinc-600 font-light">
                                     <strong class="block text-zinc-900 font-medium text-xs uppercase tracking-wide mb-1">Input Guardrails</strong>
                                     Diretrizes documentais para bloqueio de coleta de dados de menores.
-                                </li>
-                                <!-- Entrega -->
-                                <li class="text-sm text-zinc-900 font-normal border-l-2 border-zinc-400 pl-4 mt-6 bg-zinc-100/50 py-2 rounded-r-lg">
-                                    <strong class="text-xs font-bold uppercase tracking-wider text-zinc-500 mr-2">Entrega Final:</strong>
-                                    Termos de Uso do Alpha (AAA), disclaimers jurídicos prontos e diretrizes de dados sensíveis.
                                 </li>
                             </ul>
                         </div>
@@ -490,8 +500,15 @@
                     <h3 class="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-6 sm:mb-8">Condições Comerciais</h3>
                     <div class="grid grid-cols-1 gap-4">
                         <div class="flex justify-between items-center text-sm text-zinc-600 font-light border-b border-zinc-50 pb-2">
-                            <span>Setup Fee (Aceite)</span>
-                            <span class="font-medium text-zinc-900">50%</span>
+                            <div class="flex items-center gap-2">
+                                <span>Setup Fee (Aceite)</span>
+                                <!-- Bolinha vermelha de alerta (pendência) -->
+                                <span class="relative flex h-2 w-2" title="Pendente de regularização">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                </span>
+                            </div>
+                            <span class="font-medium text-red-500">50% (Pendente)</span>
                         </div>
                         <div class="flex justify-between items-center text-sm text-zinc-600 font-light border-b border-zinc-50 pb-2">
                             <span>Completion Fee (Entrega)</span>
